@@ -188,7 +188,7 @@ function Home(){
         <div>
         <div className="a">Discount</div>
       <p className='a'>
-      <FormControl sx={{width:"220px",border:"1px solid lightgray",borderRadius:"5px"}}>
+      <FormControl sx={{width:"220px",}}>
         <InputLabel id="discount-label">Discount</InputLabel>
         <Select
           labelId="discount-label"
@@ -197,6 +197,7 @@ function Home(){
           label="Discount"
           onChange={discountupdate}
         >
+          <MenuItem value={"--"}>--</MenuItem>
           <MenuItem value={"battery"}>Battery Dead</MenuItem>
           <MenuItem value={"timing"}>Timing Issue</MenuItem>
           <MenuItem value={"marketin"}>Marketin</MenuItem>
