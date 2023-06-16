@@ -22,8 +22,8 @@ function Home(){
   const [discountvalue,setDiscount]=React.useState('')
   const [value, setValue] = React.useState(dayjs('07-06-2023'));
   const [end, setEnd] = React.useState(dayjs('07-06-2023'));
-  const Starting= (dayjs(value.$d).format('DD-MM-YYYY'))
-  const Ending= (dayjs(end.$d).format('DD-MM-YYYY'))
+  const Starting= (dayjs(value.$d).format('YYYY-MM-DD'))
+  const Ending= (dayjs(end.$d).format('YYYY-MM-DD'))
   const [bikeprice,setBike]=React.useState('')
   const [biketime,setT]=React.useState('')
   console.log(Starting);
@@ -47,21 +47,28 @@ function Home(){
       navigate("/")
     };
     const Generate=()=>{
-      const data=[
-        {_id:"$oid : 6481a98173b74b6fcb49881e",
-        email:"yj@gamil.com",
-        password:"$2b$10$sGMoJqe4K1uiYWKZr1egOuUyOgo1flpB4VI.pwLiArD60bO2XiSKe",
-        __v:"$numberInt : 0",
-      },
-      {_id:"$oid : 6481a9da73b74b6fcb498822",
-      email:"yogi.suthar123@gmail.com",
-      password:"$2b$10$kNXzj26ndpG8dT0wfAo0.uoVrrOUa.hTkvtbWDsPIYn2Y.Uif5HSi",
-      __v:"$numberInt : 0"
-    },
-    ];
+      const obj = {
+      startDate: Starting,
+        endDate: Ending,
+        location:"Paldi",
+       };
+       
+       console.log(obj)
+       axios
+         .post(
+           "http://localhost:8000/api/user/admin/report",
+           obj,
+           
+         )
+         .then((res) => {
+         const data1=res;
+         console.log(data1.data.results)
+         const data=data1.data.results
     const fileName="Upadte"
     const exportType = exportFromJSON.types.csv
-    exportFromJSON({ data, fileName,exportType})
+    exportFromJSON({ data, fileName,fields:["name","user_email","bikeId","userId","start_time","end_time","date","numberOfBike","cost"],exportType})
+         })
+     
 
     };
     function discountclick(){
@@ -117,7 +124,7 @@ function Home(){
             </Link>
             <Link to="/s4"><Button sx={{
              "&.MuiButton-text":{color:"orange"}
-            }}>Subhas Bridgs</Button>
+            }}>Subhas Bridge</Button>
             </Link>
             <Link to="/s5"><Button sx={{
              "&.MuiButton-text":{color:"orange"}
@@ -181,7 +188,7 @@ function Home(){
         <div>
         <div className="a">Discount</div>
       <p className='a'>
-      <FormControl sx={{width:"230px",}}>
+      <FormControl sx={{width:"220px",border:"1px solid lightgray",borderRadius:"5px"}}>
         <InputLabel id="discount-label">Discount</InputLabel>
         <Select
           labelId="discount-label"

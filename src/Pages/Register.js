@@ -152,7 +152,7 @@ console.log(location)
                 </IconButton>
               </InputAdornment>
             }
-            label="Password"
+            label="Conformation Password"
           />
           
         
@@ -170,7 +170,7 @@ console.log(location)
           <MenuItem value={"Atal Bridge"}>Atal Bridge</MenuItem>
           <MenuItem value={"Kankariya"}>Kankariya</MenuItem>
           <MenuItem value={"Paldi"}>Paldi</MenuItem>
-          <MenuItem value={"Subhas Bridgs"}>Subhas Bridgs</MenuItem>
+          <MenuItem value={"Subhas Bridge"}>Subhas Bridge</MenuItem>
           <MenuItem value={"Vallabh Sadan"}>Vallabh Sadan</MenuItem>
         </Select>
         </FormControl>
